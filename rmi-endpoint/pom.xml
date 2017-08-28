@@ -12,7 +12,7 @@
 	<artifactId>moskito-control-agent-rmi-endpoint</artifactId>
 	<packaging>jar</packaging>
 	<version>1.2.1-SNAPSHOT</version>
-	<name>MoSKito Control Agent - RMI Endpoint</name>
+	<!--id>MoSKito Control Agent - RMI Endpoint</id-->
 
     <properties>
         <distributeme.version>2.3.4</distributeme.version>

@@ -5,6 +5,8 @@ import org.moskito.controlagent.data.accumulator.AccumulatorHolder;
 import org.moskito.controlagent.data.accumulator.AccumulatorListItem;
 import org.moskito.controlagent.data.info.SystemInfo;
 import org.moskito.controlagent.data.info.SystemInfoProvider;
+import org.moskito.controlagent.data.producers.ProducerInfo;
+import org.moskito.controlagent.data.producers.ProducersInfoProvider;
 import org.moskito.controlagent.data.status.ThresholdStatusHolder;
 import org.moskito.controlagent.data.threshold.ThresholdDataItem;
 
@@ -41,5 +43,10 @@ public class AgentServiceImpl implements AgentService {
 	@Override
 	public Map<String, AccumulatorHolder> getAccumulatorsData(List<String> accumulatorNames) throws AgentServiceException {
 		return Agent.getInstance().getAccumulatorsData(accumulatorNames);
+	}
+
+	@Override
+	public List<ProducerInfo> getStatsInfo() throws AgentServiceException {
+		return ProducersInfoProvider.getProducers();
 	}
 }

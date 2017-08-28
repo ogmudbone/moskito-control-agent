@@ -6,6 +6,8 @@ import org.moskito.controlagent.data.accumulator.AccumulatorHolder;
 import org.moskito.controlagent.data.accumulator.AccumulatorListItem;
 import org.moskito.controlagent.data.info.SystemInfo;
 import org.moskito.controlagent.data.info.SystemInfoProvider;
+import org.moskito.controlagent.data.producers.ProducerInfo;
+import org.moskito.controlagent.data.producers.ProducersInfoProvider;
 import org.moskito.controlagent.data.status.ThresholdStatusHolder;
 import org.moskito.controlagent.data.threshold.ThresholdDataItem;
 import org.moskito.controlagent.endpoints.EndpointUtility;
@@ -60,7 +62,8 @@ public class HttpEndpoint implements Filter {
         /**
          * Requests the data for thresholds of this component.
          */
-        THRESHOLDS
+        THRESHOLDS,
+		PRODUCERS
 	};
 
 	public static final String MAPPED_NAME = "moskito-control-agent";
@@ -94,6 +97,8 @@ public class HttpEndpoint implements Filter {
 			case INFO:
 				info(servletRequest, servletResponse, tokens);
 				break;
+			case PRODUCERS:
+				producers(servletRequest, servletResponse, tokens);
 			default:
 				throw new AssertionError("Unrecognized command "+command);
 		}
@@ -129,6 +134,11 @@ public class HttpEndpoint implements Filter {
 	private void info(ServletRequest servletRequest, ServletResponse servletResponse, String parameters[]) throws IOException {
 		SystemInfo info = SystemInfoProvider.getInstance().getSystemInfo();
 		writeReply(servletResponse, info);
+	}
+
+	private void producers(ServletRequest servletRequest, ServletResponse servletResponse, String parameters[]) throws IOException {
+		List<ProducerInfo> producerInfos = ProducersInfoProvider.getProducers();
+		writeReply(servletResponse, producerInfos);
 	}
 
 	void writeReply(ServletResponse servletResponse, Object parameter) throws IOException{

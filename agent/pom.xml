@@ -12,7 +12,7 @@
 	<artifactId>moskito-control-agent</artifactId>
 	<packaging>jar</packaging>
 	<version>1.2.1-SNAPSHOT</version>
-	<name>MoSKito Control Agent - Base</name>
+	<!--id>MoSKito Control Agent - Base</id-->
     <dependencies>
         <dependency>
             <groupId>com.google.code.gson</groupId>

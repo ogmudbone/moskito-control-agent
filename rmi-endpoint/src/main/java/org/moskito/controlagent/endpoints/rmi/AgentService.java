@@ -5,6 +5,8 @@ import org.distributeme.annotation.DistributeMe;
 import org.moskito.controlagent.data.accumulator.AccumulatorHolder;
 import org.moskito.controlagent.data.accumulator.AccumulatorListItem;
 import org.moskito.controlagent.data.info.SystemInfo;
+import org.moskito.controlagent.data.producers.ProducerInfo;
+import org.moskito.controlagent.data.producers.StatsInfo;
 import org.moskito.controlagent.data.status.ThresholdStatusHolder;
 import org.moskito.controlagent.data.threshold.ThresholdDataItem;
 
@@ -55,5 +57,8 @@ public interface AgentService extends Service{
 	 * @throws AgentServiceException
 	 */
 	Map<String, AccumulatorHolder> getAccumulatorsData(List<String> accumulatorNames) throws AgentServiceException;
+
+	// TODO : RENAME TO GET PRODUCERS INFO
+	List<ProducerInfo> getStatsInfo() throws AgentServiceException;
 
 }
